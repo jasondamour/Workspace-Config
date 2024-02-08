@@ -2,7 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Enable autoenv
 if python3 -mplatform | grep -i macos &>/dev/null; then
-source '/opt/homebrew/opt/autoenv/activate.sh'
+  eval "$(jenv init -)"
+  source '/opt/homebrew/opt/autoenv/activate.sh'
 elif python3 -mplatform | grep -i ubuntu &>/dev/null; then
   source ~/.autoenv/activate.sh
 fi
@@ -17,7 +18,9 @@ ZSH_THEME='spaceship'
 SPACESHIP_DIR_PREFIX='In '
 SPACESHIP_PROMPT_DEFAULT_PREFIX='with '
 SPACESHIP_GIT_STATUS_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
 SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_AZURE_SHOW=false
 SPACESHIP_AWS_SYMBOL='☁️  '
 SPACESHIP_VENV_COLOR='#d6ba5f'
 SPACESHIP_VENV_SYMBOL='venv:'
@@ -70,7 +73,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 if python3 -mplatform | grep -i macos &>/dev/null; then
-  eval "$(jenv init -)"
   export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
   export BUILDKIT_NO_CLIENT_TOKEN=true
   fpath+=/opt/homebrew/share/zsh/site-functions
