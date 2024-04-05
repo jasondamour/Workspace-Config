@@ -1,10 +1,10 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-# Enable autoenv
 if python3 -mplatform | grep -i macos &>/dev/null; then
   eval "$(jenv init -)"
   source '/opt/homebrew/opt/autoenv/activate.sh'
 elif python3 -mplatform | grep -i ubuntu &>/dev/null; then
+  # Enable autoenv
   source ~/.autoenv/activate.sh
 fi
 
@@ -78,7 +78,7 @@ if python3 -mplatform | grep -i macos &>/dev/null; then
   export BUILDKIT_NO_CLIENT_TOKEN=true
   fpath+=/opt/homebrew/share/zsh/site-functions
   autoload -Uz compinit && compinit
+  source virtualenvwrapper.sh
 elif python3 -mplatform | grep -i ubuntu &>/dev/null; then
   export BROWSER=wslview
 fi
-
