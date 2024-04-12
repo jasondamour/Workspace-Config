@@ -1,14 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-if python3 -mplatform | grep -i macos &>/dev/null; then
-  eval "$(jenv init -)"
-  source '/opt/homebrew/opt/autoenv/activate.sh'
-elif python3 -mplatform | grep -i ubuntu &>/dev/null; then
-  # Enable autoenv
-  source ~/.autoenv/activate.sh
-fi
-
-
 # Plugin configuration
 SHOW_AWS_PROMPT=false
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
@@ -25,6 +16,7 @@ SPACESHIP_JAVA_SHOW=false
 SPACESHIP_AWS_SYMBOL='☁️  '
 SPACESHIP_VENV_COLOR='#d6ba5f'
 SPACESHIP_VENV_SYMBOL='venv:'
+SPACESHIP_VENV_PREFIX='in '
 SPACESHIP_CHAR_SUFFIX=' '
 SPACESHIP_PROMPT_ORDER=(
   dir            # Current directory section
@@ -60,25 +52,39 @@ SPACESHIP_PROMPT_ORDER=(
 
 # Plugins
 plugins=(
+    zsh-autosuggestions
+    direnv
     git
     docker
     aws
     gcloud
-    autoenv
-    virtualenvwrapper
-    zsh-autosuggestions
+    terraform
 )
 
-# Init zsh
+# Add Homebrew site functions to path (before sourcing OMZ)
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+# Source Oh My ZSH
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-if python3 -mplatform | grep -i macos &>/dev/null; then
-  export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
-  export BUILDKIT_NO_CLIENT_TOKEN=true
-  fpath+=/opt/homebrew/share/zsh/site-functions
-  autoload -Uz compinit && compinit
-  source virtualenvwrapper.sh
-elif python3 -mplatform | grep -i ubuntu &>/dev/null; then
+########################
+## User configuration ##
+########################
+
+# WSL Configs
+if python3 -mplatform | grep -i ubuntu &>/dev/null; then
   export BROWSER=wslview
 fi
+
+# Colima
+if [ -e ${HOME}/.colima/default/docker.sock ]; then
+  export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+fi
+
+if [ -e /Applications/SnowSQL.app/Contents/MacOS ]; then
+  export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+fi
+
+# added by Snowflake SnowSQL installer v1.2

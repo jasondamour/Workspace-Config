@@ -1,0 +1,5 @@
+[user]
+	name = Jason D'Amour
+	email = jasondamour98@gmail.com
+[core]
+	editor = code --wait
