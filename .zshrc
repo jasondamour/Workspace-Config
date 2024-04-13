@@ -54,6 +54,9 @@ SPACESHIP_PROMPT_ORDER=(
 plugins=(
     zsh-autosuggestions
     direnv
+    nvm
+    jenv
+    pyenv
     git
     docker
     aws
@@ -61,9 +64,17 @@ plugins=(
     terraform
 )
 
-# Add Homebrew site functions to path (before sourcing OMZ)
-if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+# Homebrew
+if [ -e /opt/homebrew/ ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+fi
+
+# pyenv
+if [ -e $HOME/.pyenv ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
 fi
 
 # Source Oh My ZSH
@@ -83,8 +94,8 @@ if [ -e ${HOME}/.colima/default/docker.sock ]; then
   export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
 fi
 
+# added by Snowflake SnowSQL installer v1.2
 if [ -e /Applications/SnowSQL.app/Contents/MacOS ]; then
   export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 fi
 
-# added by Snowflake SnowSQL installer v1.2

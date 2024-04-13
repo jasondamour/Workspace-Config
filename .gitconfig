@@ -1,5 +1,8 @@
 [user]
-	name = Jason D'Amour
-	email = jasondamour98@gmail.com
-[core]
-	editor = code --wait
+        name = "Jason D'Amour"
+        email = "jasondamour98@gmail.com"
+        signingkey = /home/jasondamour/.ssh/id_ed25519.pub
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
