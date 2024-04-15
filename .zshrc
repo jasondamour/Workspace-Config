@@ -1,5 +1,20 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+# Homebrew
+if [ -e /opt/homebrew/ ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+fi
+
+# pyenv
+if [ -e $HOME/.pyenv ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi
+
+
+
 # Plugin configuration
 SHOW_AWS_PROMPT=false
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
@@ -63,19 +78,6 @@ plugins=(
     gcloud
     terraform
 )
-
-# Homebrew
-if [ -e /opt/homebrew/ ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
-fi
-
-# pyenv
-if [ -e $HOME/.pyenv ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
-fi
 
 # Source Oh My ZSH
 source $ZSH/oh-my-zsh.sh
