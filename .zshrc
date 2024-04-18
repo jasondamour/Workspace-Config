@@ -92,8 +92,8 @@ if python3 -mplatform | grep -i ubuntu &>/dev/null; then
 fi
 
 # Atuin shell history
-if [ -e /usr/local/bin/atuin ]; then
-  eval "$(atuin init zsh --disable-up-arrow)"
+if command -v atuin &> /dev/null; then
+  eval "$(atuin init --disable-up-arrow)"
 fi
 
 # Colima
