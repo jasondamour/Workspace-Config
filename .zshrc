@@ -2,18 +2,18 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Homebrew
 if [ -e /opt/homebrew/ ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
   FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # pyenv
+# Has to be configured before sourcing omz due to bug
 if [ -e $HOME/.pyenv ]; then
   export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
+  export PATH="$PATH:$PYENV_ROOT/bin"
   eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
 fi
-
-
 
 # Plugin configuration
 SHOW_AWS_PROMPT=false
@@ -91,6 +91,11 @@ if python3 -mplatform | grep -i ubuntu &>/dev/null; then
   export BROWSER=wslview
 fi
 
+# Atuin shell history
+if [ -e /usr/local/bin/atuin ]; then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
 # Colima
 if [ -e ${HOME}/.colima/default/docker.sock ]; then
   export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
@@ -98,6 +103,8 @@ fi
 
 # added by Snowflake SnowSQL installer v1.2
 if [ -e /Applications/SnowSQL.app/Contents/MacOS ]; then
-  export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+  export PATH="$PATH:/Applications/SnowSQL.app/Contents/MacOS"
 fi
 
+
+# TODO: TRIAGE
