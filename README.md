@@ -1,8 +1,7 @@
-# workstartion-config
-A collection of scripts to get a new workstation configured
+# Workspace Config
+A collection of scripts to get a new workspace configured
 
 ## Usage
-
 Symlink files
 ```
 ln -s $(pwd)/Workspace-Config/.zshrc ~/.zshrc
