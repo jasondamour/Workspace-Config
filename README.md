@@ -2,23 +2,11 @@
 A collection of scripts to get a new workstation configured
 
 ## Usage
-Install Brew and Git
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install git
-```
 
-Clone Repo
+Symlink files
 ```
-git clone git@github.com:jasondamour/Workspace-Config.git
+ln -s $(pwd)/Workspace-Config/.zshrc ~/.zshrc
+ln -s $(pwd)/Workspace-Config/.zprofile ~/.zprofile
+ln -s $(pwd)/Workspace-Config/.gitconfig ~/.gitconfig
 ```
-
-Execute setup.sh with zsh context
-```
-export ZSH_CUSTOM && ./setup.sh
-```
-
-Link `.zshrc`
-```
-ln -s ~/Workspace/Personal/Workspace-Config/.zshrc ~/.zshrc
-```
+c
