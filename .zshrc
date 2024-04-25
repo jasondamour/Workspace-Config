@@ -93,7 +93,7 @@ fi
 
 # Atuin shell history
 if command -v atuin &> /dev/null; then
-  eval "$(atuin init --disable-up-arrow)"
+  eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
 # Colima
