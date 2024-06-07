@@ -4,8 +4,9 @@ A collection of scripts to get a new workspace configured
 ## Usage
 Symlink files
 ```
-ln -s $(pwd)/Workspace-Config/.zshrc ~/.zshrc
-ln -s $(pwd)/Workspace-Config/.zprofile ~/.zprofile
-ln -s $(pwd)/Workspace-Config/.gitconfig ~/.gitconfig
+rm ~/.zshrc ~/.zprofile ~/.gitconfig
+ln -s $(pwd)/.zshrc ~/.zshrc
+ln -s $(pwd)/.zprofile ~/.zprofile
+ln -s $(pwd)/.gitconfig ~/.gitconfig
 ```
-c
+
