@@ -106,5 +106,10 @@ if [ -e /Applications/SnowSQL.app/Contents/MacOS ]; then
   export PATH="$PATH:/Applications/SnowSQL.app/Contents/MacOS"
 fi
 
+# Pants
+if [ -e $HOME/.local/bin ]; then
+  export PATH="$PATH:$HOME/.local/bin"
+fi
+
 
 # TODO: TRIAGE
