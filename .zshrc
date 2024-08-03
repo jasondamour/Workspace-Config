@@ -67,6 +67,7 @@ SPACESHIP_PROMPT_ORDER=(
 
 # Plugins
 plugins=(
+    zsh-autosuggestions
     direnv
     nvm
     jenv
