@@ -8,3 +8,5 @@
         gpgsign = true
 [core]
 	editor = code --wait
+[safe]
+	directory = *

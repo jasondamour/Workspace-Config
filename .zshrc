@@ -28,7 +28,7 @@ SPACESHIP_DOCKER_SHOW=false
 SPACESHIP_GCLOUD_SHOW=false
 SPACESHIP_AZURE_SHOW=false
 SPACESHIP_JAVA_SHOW=false
-SPACESHIP_AWS_SYMBOL='☁️  '
+SPACESHIP_AWS_SYMBOL='☁️ '
 SPACESHIP_VENV_COLOR='#d6ba5f'
 SPACESHIP_VENV_SYMBOL='venv:'
 SPACESHIP_VENV_PREFIX='in '
@@ -67,7 +67,6 @@ SPACESHIP_PROMPT_ORDER=(
 
 # Plugins
 plugins=(
-    zsh-autosuggestions
     direnv
     nvm
     jenv
@@ -77,6 +76,7 @@ plugins=(
     aws
     gcloud
     terraform
+    mise
 )
 
 # Source Oh My ZSH
