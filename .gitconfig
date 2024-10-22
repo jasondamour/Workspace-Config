@@ -10,3 +10,7 @@
 	editor = code --wait
 [safe]
 	directory = *
+
+
+[includeIf "gitdir:~/Workspace/Lumos/"]
+        path = ~/.lumos.gitconfig
