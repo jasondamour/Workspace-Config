@@ -77,7 +77,8 @@ plugins=(
     aws
     gcloud
     terraform
-    mise
+    rust
+    ssh-agent
 )
 
 # Source Oh My ZSH
