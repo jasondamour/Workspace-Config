@@ -21,30 +21,35 @@ ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 
 # Spaceship configuration
 ZSH_THEME='spaceship'
-SPACESHIP_DIR_PREFIX='In '
+SAPCESHIP_PROMPT_ASYNC='false'
 SPACESHIP_PROMPT_DEFAULT_PREFIX='with '
-SPACESHIP_GIT_STATUS_SHOW=false
+SPACESHIP_DIR_PREFIX='In '
+SPACESHIP_GIT_STATUS_SHOW='false'
 SPACESHIP_AWS_SYMBOL='☁️ '
 SPACESHIP_VENV_COLOR='#d6ba5f'
 SPACESHIP_VENV_SYMBOL='venv:'
 SPACESHIP_VENV_PREFIX='in '
 SPACESHIP_CHAR_SUFFIX=' '
 SPACESHIP_PROMPT_ORDER=(
-  dir            # Current directory section
+  # Directory info
+  user           # Username section
   host           # Hostname section
+  dir            # Current directory section
   git            # Git section (git_branch + git_status)
-  node           # Node.js section
-  python         # Python section
+
+  # Local environments
   venv           # virtualenv section
-  golang         # Go section
-  java           # Java section
-  docker_compose # Docker section
-  aws            # Amazon Web Services section
   conda          # conda virtualenv section
+  docker_compose # Docker section
+
+  # Remote environments
+  aws            # Amazon Web Services section
   kubectl        # Kubectl context section
   ansible        # Ansible section
   terraform      # Terraform workspace section
   pulumi         # Pulumi stack section
+
+  # Prompt info
   exec_time      # Execution time
   async          # Async jobs indicator
   line_sep       # Line break
