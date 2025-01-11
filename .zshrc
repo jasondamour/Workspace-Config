@@ -62,7 +62,6 @@ SPACESHIP_PROMPT_ORDER=(
 
 # Plugins
 plugins=(
-    zsh-autosuggestions
     direnv
     nvm
     jenv
@@ -74,6 +73,8 @@ plugins=(
     terraform
     rust
     ssh-agent
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 # Source Oh My ZSH
@@ -107,6 +108,9 @@ fi
 if [ -e $HOME/.local/bin ]; then
   export PATH="$PATH:$HOME/.local/bin"
 fi
+
+# Add the following characters to "words" to make deleting flags easier
+export WORDCHARS='_-'
 
 
 # TODO: TRIAGE
