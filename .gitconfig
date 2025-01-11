@@ -10,6 +10,8 @@
 	editor = code --wait
 [safe]
 	directory = *
+[pull]
+	rebase = true
 
 
 [includeIf "gitdir:~/Workspace/Lumos/"]
