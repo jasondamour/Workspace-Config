@@ -84,6 +84,10 @@ source $ZSH/oh-my-zsh.sh
 ## User configuration ##
 ########################
 
+# Shell configurations
+export WORDCHARS='_-'
+export EDITOR="code -w"
+
 # WSL Configs
 if python3 -mplatform | grep -i ubuntu &>/dev/null; then
   export BROWSER=wslview
@@ -109,8 +113,6 @@ if [ -e $HOME/.local/bin ]; then
   export PATH="$PATH:$HOME/.local/bin"
 fi
 
-# Add the following characters to "words" to make deleting flags easier
-export WORDCHARS='_-'
 
 
 # TODO: TRIAGE
